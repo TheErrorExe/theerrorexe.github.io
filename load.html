@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbinde mit 5bChat by WebWarp…</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .loading-container {
+            text-align: center;
+        }
+        .loading-gif {
+            margin-top: 20px;
+        }
+        .loading-gif img {
+            width: 50px; /* Kleinere Größe für das Lade-Icon */
+            height: 50px; /* Kleinere Größe für das Lade-Icon */
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <h1>Verbindung zu 5bChat by WebWarp…</h1>
+        <div class="loading-gif">
+            <img src="loading.gif" alt="Laden...">
+        </div>
+    </div>
+
+    <script>
+        function fetchStatus() {
+            fetch('https://webwarpgames.github.io/api/chat.conf')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    parseStatus(data);
+                })
+                .catch(error => {
+                    showError('112-4522', 'Konnte nicht zum Server verbinden. Bitte kontaktiere support@webwarp.com für Support.');
+                });
+        }
+
+        function parseStatus(data) {
+            const statusLine = data.match(/STATUS:([^\s]+)/);
+            const errorCodeLine = data.match(/ERRORCODE:(.*)/);
+            const messageLine = data.match(/MESSAGE:(.*)/);
+
+            if (statusLine) {
+                const status = statusLine[1];
+                if (status === 'OK') {
+                    window.location.href = 'chat.html';
+                } else if (status === 'MESSAGE' && errorCodeLine && messageLine) {
+                    const errorCode = errorCodeLine[1].trim();
+                    const message = messageLine[1].trim();
+                    showError(errorCode, message);
+                } else {
+                    showError('Unknown', 'Unbekannter Fehler');
+                }
+            } else {
+                showError('Unknown', 'Fehlerhafte Antwort vom Server');
+            }
+        }
+
+        function showError(code, message) {
+            alert(`Fehlercode: ${code}\nBeschreibung: ${message}`);
+        }
+
+        setTimeout(fetchStatus, 5000);
+    </script>
+</body>
+</html>
