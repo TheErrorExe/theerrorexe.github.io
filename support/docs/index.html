@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TheErrorExe Inc.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav {
+            margin: 15px;
+        }
+        .nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        @media screen and (max-width: 600px) {
+            .nav a {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>TheErrorExe Inc.</h1>
+    </div>
+    <div class="nav">
+        <a href="/index.html">Home</a>
+        <a href="/about/">About</a>
+        <a href="/proj/">Projects/Services</a>
+        <a href="/contact/">Contact</a>
+        <a href="/agb/">Nutzungsbedingungen</a>
+        <a href="/support/">Support</a>
+    </div>
+<h1>Support Docs</h1>
+  <p>Willkommen bei Support Docs.</p>
+  <h3>Alle Docs</h3>
+  <ul>
+    <li><a href="docs001.html">Was sind Docs?</li>
+    <li>Mehr kommt bald...</li>
+  </ul>
+  <p>Geben sie eine Docs ID ein:</p>
+  <input id="error">
+  <script>
+    document.getElementById('error').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            window.location.href = 'https://theerrorexe.github.io/support/docs/' + this.value + '.html';
+        }
+    });
+  </script>
+</body>
+</html>
