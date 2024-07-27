@@ -1,0 +1,14 @@
+[
+  {
+    "cover": "",
+    "name": "Game One",
+    "id": "123",
+    "description": "This is the description for Game One."
+  },
+  {
+    "cover": "",
+    "name": "Game Two",
+    "id": "456",
+    "description": "This is the description for Game Two."
+  }
+]
