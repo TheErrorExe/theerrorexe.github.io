@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheErrorExe Control Server Debug Client</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>TheErrorExe Control Server Debug Client</h1>
+    
+    <div id="auth-section">
+        <h2>Register</h2>
+        <input type="text" id="register-username" placeholder="Username">
+        <input type="password" id="register-password" placeholder="Password">
+        <button onclick="register()">Register</button>
+        
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="Username">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div id="game-section">
+        <h2>Matchmaking</h2>
+        <input type="text" id="matchmaking-token" placeholder="Session Token">
+        <input type="text" id="matchmaking-game" placeholder="Game ID">
+        <button onclick="matchmaking()">Matchmake</button>
+
+        <h2>Game Info</h2>
+        <input type="text" id="game-info-token" placeholder="Session Token">
+        <input type="text" id="game-info-game" placeholder="Game ID">
+        <button onclick="getGameInfo()">Get Game Info</button>
+    </div>
+
+    <div id="output">
+        <h2>Output</h2>
+        <pre id="output-text"></pre>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
