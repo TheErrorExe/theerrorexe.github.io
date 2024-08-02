@@ -43,7 +43,7 @@ Für Fragen oder Beschwerden können Sie TheErrorExe unter der folgenden Adresse
 **TheErrorExe Games Studio**  
 E-Mail: theerrorexe@gmail.com
 
-Diese Bedingungen wurden zuletzt am [Datum] aktualisiert.
+Diese Bedingungen wurden zuletzt am 2. August 2024 aktualisiert.
 
 ---
 
@@ -63,14 +63,13 @@ E-Mail: theerrorexe@gmail.com
 ### 2. Erhobene Daten
 Wir erheben folgende Arten von Daten:
 - **Registrierungsdaten**: Name, Benutzername, Passwort.
-- **Nutzungsdaten**: Informationen über Ihre Nutzung von TheNetwork, wie Spielverlauf, Freunde, Matchmaking-Aktivitäten.
+- **Nutzungsdaten**: Informationen über Ihre Nutzung von TheNetwork, wie Spielverlauf.
 - **Technische Daten**: IP-Adresse.
 
 ### 3. Verwendungszwecke
 Die erhobenen Daten werden zu folgenden Zwecken verwendet:
 - **Bereitstellung und Verbesserung von TheNetwork**: Verwaltung Ihres Kontos, Bereitstellung von Freundes- und Matchmaking-Diensten.
 - **Sicherheit und Missbrauchsprävention**: Schutz vor Betrug, Missbrauch und anderen schädlichen Aktivitäten.
-- **Kommunikation**: Kontaktaufnahme mit Ihnen bezüglich Ihres Kontos, Updates und Änderungen an TheNetwork.
 
 ### 4. Weitergabe von Daten
 Ihre personenbezogenen Daten werden nicht an Dritte weitergegeben, außer in den folgenden Fällen:
@@ -97,7 +96,7 @@ Für Fragen oder Anliegen bezüglich Ihrer personenbezogenen Daten können Sie u
 **TheErrorExe Games Studio**  
 E-Mail: theerrorexe@gmail.com
 
-Diese Datenschutzerklärung wurde zuletzt am [Datum] aktualisiert.
+Diese Datenschutzerklärung wurde zuletzt am 2. August 2024 aktualisiert.
 
 ---
 
