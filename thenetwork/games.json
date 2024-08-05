@@ -1,0 +1,16 @@
+{
+    "games": [
+        {
+            "filename": "game1[001].py",
+            "name": "Game 1"
+        },
+        {
+            "filename": "game2[002].py",
+            "name": "Game 2"
+        },
+        {
+            "filename": "game3[003].py",
+            "name": "Game 3"
+        }
+    ]
+}
