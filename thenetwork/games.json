@@ -1,8 +1,8 @@
 {
     "games": [
         {
-            "filename": "game1[001].py",
-            "name": "Game 1"
+            "filename": "pong[001].py",
+            "name": "Pong"
         },
         {
             "filename": "game2[002].py",
