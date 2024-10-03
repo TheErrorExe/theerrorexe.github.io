@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehlercode-Suche</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fehlercode-Suche</h1>
+    <input type="text" id="errorCode" placeholder="Geben Sie einen Fehlercode ein">
+    <button onclick="searchErrorCode()">Suchen</button>
+    
+    <div id="results"></div>
+
+    <script>
+        let errorData = {};
+
+        // Fehlercodes aus errors.json laden
+        fetch('errors.json')
+            .then(response => response.json())
+            .then(data => {
+                errorData = data;
+            })
+            .catch(error => {
+                console.error('Fehler beim Laden der Daten:', error);
+            });
+
+        function searchErrorCode() {
+            const inputCode = document.getElementById('errorCode').value.trim();
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            if (!inputCode) {
+                resultsContainer.innerHTML = 'Bitte geben Sie einen Fehlercode ein.';
+                return;
+            }
+
+            const regex = new RegExp(`^${inputCode.replace(/[XY]/g, '[0-9]')}$`);
+            const matches = Object.entries(errorData).filter(([code]) => regex.test(code));
+
+            if (matches.length > 0) {
+                matches.forEach(([code, meaning]) => {
+                    resultsContainer.innerHTML += `<p><strong>${code}:</strong> ${meaning}</p>`;
+                });
+            } else {
+                resultsContainer.innerHTML = 'Keine Übereinstimmung gefunden.';
+            }
+        }
+    </script>
+</body>
+</html>
