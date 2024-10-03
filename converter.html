@@ -28,8 +28,8 @@
 </head>
 <body>
     <h1>Error Code Lookup</h1>
-    <input type="text" id="errorCode" placeholder="Geben Sie den Fehlercode ein...">
-    <button onclick="lookupErrorCode()">Suchen</button>
+    <input type="text" id="errorCode" placeholder="Wii Error Code">
+    <button onclick="lookupErrorCode()">Search</button>
 
     <div class="result" id="result"></div>
 
@@ -44,12 +44,11 @@
 
             // Ersetzen von Platzhaltern durch reguläre Ausdrücke
             const regexPattern = code
-                .replace(/X/g, '\\d') // X durch Ziffern ersetzen
-                .replace(/Y/g, '\\d') // Y durch Ziffern ersetzen
-                .replace(/x/g, '\\d') // x durch Ziffern ersetzen
-                .replace(/y/g, '\\d') // y durch Ziffern ersetzen
-                .replace(/(\d+)/g, '($1)') // Ziffern in Gruppen setzen
-                .replace(/(\(|\d+)([XxYy])(\)|\d+)/g, '$1\\d$3'); // Platzhalter nach Ziffern erlauben
+                .replace(/X/g, '\\d*') // X durch beliebige Ziffern ersetzen
+                .replace(/Y/g, '\\d*') // Y durch beliebige Ziffern ersetzen
+                .replace(/x/g, '\\d*') // x durch beliebige Ziffern ersetzen
+                .replace(/y/g, '\\d*') // y durch beliebige Ziffern ersetzen
+                .replace(/(\d+)/g, '($1)'); // Ziffern in Gruppen setzen
 
             const regex = new RegExp(`^${regexPattern}$`);
 
@@ -58,12 +57,12 @@
 
             // Anzeige der Ergebnisse
             if (matches.length > 0) {
-                resultDiv.innerHTML = '<h3>Gefundene Fehlercodes:</h3>';
+                resultDiv.innerHTML = '<h3>Error-Codes:</h3>';
                 matches.forEach(([key, value]) => {
                     resultDiv.innerHTML += `<p>${key}: ${value}</p>`;
                 });
             } else {
-                resultDiv.innerHTML = '<p>Kein passender Fehlercode gefunden.</p>';
+                resultDiv.innerHTML = '<p>No Error Codes found</p>';
             }
         }
     </script>
