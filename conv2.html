@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Code Lookup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Error Code Lookup</h1>
+    <input type="text" id="errorCode" placeholder="Wii Error Code">
+    <button onclick="lookupErrorCode()">Search</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        async function lookupErrorCode() {
+            const code = document.getElementById('errorCode').value.trim();
+            const resultDiv = document.getElementById('result');
+
+            // Laden der errors.json
+            const response = await fetch('errors.json');
+            const errors = await response.json();
+
+            // Ersetzen von Platzhaltern durch reguläre Ausdrücke
+            const regexPattern = code
+                .replace(/X/g, '[0-9]') // X durch Ziffern ersetzen
+                .replace(/Y/g, '[0-9]') // Y durch Ziffern ersetzen
+                .replace(/x/g, '[0-9]') // x durch Ziffern ersetzen
+                .replace(/y/g, '[0-9]'); // y durch Ziffern ersetzen
+
+            // Erlaubt die Übereinstimmung mit Fehlercodes, die die gleiche Länge haben oder länger sind
+            const regex = new RegExp(`^${regexPattern}$`);
+
+            // Suche nach passenden Fehlercodes
+            const matches = Object.entries(errors).filter(([key, value]) => {
+                // Überprüfen, ob der Schlüssel die gleiche Anzahl von Ziffern hat
+                return regex.test(key) && key.length >= code.length;
+            });
+
+            // Anzeige der Ergebnisse
+            if (matches.length > 0) {
+                resultDiv.innerHTML = '<h3>Error-Codes:</h3>';
+                matches.forEach(([key, value]) => {
+                    resultDiv.innerHTML += `<p>${key}: ${value}</p>`;
+                });
+            } else {
+                resultDiv.innerHTML = '<p>No Error Codes found</p>';
+            }
+        }
+    </script>
+</body>
+</html>
