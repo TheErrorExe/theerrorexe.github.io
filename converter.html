@@ -28,7 +28,7 @@
 </head>
 <body>
     <h1>Error Code Lookup</h1>
-    <input type="text" id="errorCode" placeholder="Geben Sie den Wii-Fehlercode ein...">
+    <input type="text" id="errorCode" placeholder="Geben Sie den Fehlercode ein...">
     <button onclick="lookupErrorCode()">Suchen</button>
 
     <div class="result" id="result"></div>
@@ -42,8 +42,18 @@
             const response = await fetch('errors.json');
             const errors = await response.json();
 
+            // Ersetzen von Platzhaltern durch reguläre Ausdrücke
+            const regexPattern = code
+                .replace(/X/g, '\\d') // X durch Ziffern ersetzen
+                .replace(/Y/g, '\\d') // Y durch Ziffern ersetzen
+                .replace(/x/g, '\\d') // x durch Ziffern ersetzen
+                .replace(/y/g, '\\d') // y durch Ziffern ersetzen
+                .replace(/(\d+)/g, '($1)') // Ziffern in Gruppen setzen
+                .replace(/(\(|\d+)([XxYy])(\)|\d+)/g, '$1\\d$3'); // Platzhalter nach Ziffern erlauben
+
+            const regex = new RegExp(`^${regexPattern}$`);
+
             // Suche nach passenden Fehlercodes
-            const regex = new RegExp(`^${code.replace(/X/g, '\\d').replace(/Y/g, '\\d').replace(/x/g, '\\d').replace(/y/g, '\\d')}$`);
             const matches = Object.entries(errors).filter(([key, value]) => regex.test(key));
 
             // Anzeige der Ergebnisse
