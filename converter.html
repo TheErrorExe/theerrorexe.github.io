@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fehlercode-Suche</title>
+    <title>Error Code Lookup</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            padding: 0;
         }
         input[type="text"] {
             width: 300px;
@@ -17,50 +18,42 @@
         button {
             padding: 10px 15px;
         }
-        #results {
+        .result {
             margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
-    <h1>Fehlercode-Suche</h1>
-    <input type="text" id="errorCode" placeholder="Geben Sie einen Fehlercode ein">
-    <button onclick="searchErrorCode()">Suchen</button>
-    
-    <div id="results"></div>
+    <h1>Error Code Lookup</h1>
+    <input type="text" id="errorCode" placeholder="Geben Sie den Wii-Fehlercode ein...">
+    <button onclick="lookupErrorCode()">Suchen</button>
+
+    <div class="result" id="result"></div>
 
     <script>
-        let errorData = {};
+        async function lookupErrorCode() {
+            const code = document.getElementById('errorCode').value.trim();
+            const resultDiv = document.getElementById('result');
 
-        // Fehlercodes aus errors.json laden
-        fetch('errors.json')
-            .then(response => response.json())
-            .then(data => {
-                errorData = data;
-            })
-            .catch(error => {
-                console.error('Fehler beim Laden der Daten:', error);
-            });
+            // Laden der errors.json
+            const response = await fetch('errors.json');
+            const errors = await response.json();
 
-        function searchErrorCode() {
-            const inputCode = document.getElementById('errorCode').value.trim();
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = '';
+            // Suche nach passenden Fehlercodes
+            const regex = new RegExp(`^${code.replace(/X/g, '\\d').replace(/Y/g, '\\d').replace(/x/g, '\\d').replace(/y/g, '\\d')}$`);
+            const matches = Object.entries(errors).filter(([key, value]) => regex.test(key));
 
-            if (!inputCode) {
-                resultsContainer.innerHTML = 'Bitte geben Sie einen Fehlercode ein.';
-                return;
-            }
-
-            const regex = new RegExp(`^${inputCode.replace(/[XY]/g, '[0-9]')}$`);
-            const matches = Object.entries(errorData).filter(([code]) => regex.test(code));
-
+            // Anzeige der Ergebnisse
             if (matches.length > 0) {
-                matches.forEach(([code, meaning]) => {
-                    resultsContainer.innerHTML += `<p><strong>${code}:</strong> ${meaning}</p>`;
+                resultDiv.innerHTML = '<h3>Gefundene Fehlercodes:</h3>';
+                matches.forEach(([key, value]) => {
+                    resultDiv.innerHTML += `<p>${key}: ${value}</p>`;
                 });
             } else {
-                resultsContainer.innerHTML = 'Keine Übereinstimmung gefunden.';
+                resultDiv.innerHTML = '<p>Kein passender Fehlercode gefunden.</p>';
             }
         }
     </script>
