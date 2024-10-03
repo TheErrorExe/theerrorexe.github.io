@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wii Error Coder Sucher</title>
+    <title>Wii Error Codes Searcher</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,9 +36,9 @@
     </style>
 </head>
 <body>
-    <h1>Wii Error Coder Sucher</h1>
-    <input type="text" id="searchInput" placeholder="Geben Sie den Fehlercode ein">
-    <button id="searchButton">Suchen</button>
+    <h1>Wii Error Codes</h1>
+    <input type="text" id="searchInput" placeholder="Wii Error Code">
+    <button id="searchButton">Search</button>
     <div id="results"></div>
 
     <script>
@@ -96,7 +96,7 @@
             resultsDiv.innerHTML = '';
 
             if (results.length === 0) {
-                resultsDiv.innerHTML = '<p>Keine Ergebnisse gefunden.</p>';
+                resultsDiv.innerHTML = '<p>No Error Codes found. Try to remove the back characters until it works.</p>';
             } else {
                 results.forEach(result => {
                     const div = document.createElement('div');
