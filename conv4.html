@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wii Error Coder Sucher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wii Error Coder Sucher</h1>
+    <input type="text" id="searchInput" placeholder="Geben Sie den Fehlercode ein">
+    <button id="searchButton">Suchen</button>
+    <div id="results"></div>
+
+    <script>
+        async function fetchErrors() {
+            const response = await fetch('errors.json');
+            return await response.json();
+        }
+
+        function searchErrors(errors, query) {
+            const results = [];
+            const regex = new RegExp(query.replace(/X/g, '.').replace(/y/g, '.'), 'i');
+
+            for (const code in errors) {
+                // Überprüfung auf "bis" Fehlercodes
+                const rangeMatch = code.match(/^(\d+)-(\d+)$/);
+                if (rangeMatch) {
+                    const start = parseInt(rangeMatch[1]);
+                    const end = parseInt(rangeMatch[2]);
+                    if (query >= start && query <= end) {
+                        results.push(`${code}: ${errors[code]}`);
+                    }
+                } else if (regex.test(code)) {
+                    results.push(`${code}: ${errors[code]}`);
+                }
+            }
+
+            return results;
+        }
+
+        document.getElementById('searchButton').addEventListener('click', async () => {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) return;
+
+            const errors = await fetchErrors();
+            const results = searchErrors(errors, query);
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p>Keine Ergebnisse gefunden.</p>';
+            } else {
+                results.forEach(result => {
+                    const div = document.createElement('div');
+                    div.textContent = result;
+                    resultsDiv.appendChild(div);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
