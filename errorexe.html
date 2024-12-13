@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <script>
+    // Funktion zum Abrufen der Sprache des Benutzers
+function checkLanguage() {
+    // Abrufen der vom Browser angegebenen Sprache
+    const userLanguage = navigator.language || navigator.userLanguage;
+
+    // Prüfen, ob die Sprache Deutsch ist (z. B. "de" oder "de-DE")
+    if (!userLanguage.startsWith('de')) {
+        // Weiterleitung zur Fehlerseite, wenn die Sprache nicht Deutsch ist
+        window.location.href = "erroreng.html";
+    }
+}
+
+// Die Funktion beim Laden der Seite ausführen
+document.addEventListener('DOMContentLoaded', checkLanguage);
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Seite</title>
