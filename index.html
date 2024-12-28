@@ -1,58 +1,93 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page</title>
+  <meta name="description" content="Welcome to the official website of TheErrorExe! Explore links, projects, and more.">
+  <meta name="keywords" content="TheErrorExe, Friendcodes, ReviveMii, Projects, Website">
+  <meta name="author" content="TheErrorExe">
+  <title>TheErrorExe - Official Website</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
       text-align: center;
-      background-color: #f9f9f9;
     }
     header {
-      background-color: #4CAF50;
+      background: linear-gradient(90deg, #4CAF50, #81C784);
       color: white;
       padding: 20px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-    h1 {
+    header h1 {
       margin: 0;
+      font-size: 2.5rem;
     }
-    .container {
+    main {
       margin: 50px auto;
-      max-width: 600px;
+      max-width: 800px;
       padding: 20px;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
     }
     a {
       text-decoration: none;
     }
     button {
-      background-color: #4CAF50;
+      background: #4CAF50;
       color: white;
       border: none;
-      padding: 15px 20px;
-      margin: 10px;
-      cursor: pointer;
+      padding: 15px 25px;
       font-size: 16px;
-      border-radius: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
     button:hover {
-      background-color: #45a049;
+      background: #45a049;
+      transform: translateY(-2px);
+    }
+    footer {
+      background: #333;
+      color: white;
+      padding: 10px 0;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+    footer a {
+      color: #81C784;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to the Homepage of TheErrorExe</h1>
+    <h1>Welcome to TheErrorExe's Website</h1>
   </header>
-  <div class="container">
-    <p>Links:</p>
-    <a href="/erroreng.html" target="_blank"><button>My Friendcodes</button></a>
-    <!-- a href="/about.html" target="_blank"><button>About Me</button></a> -->
-    <a href="http://revivemii.errexe.xyz/" target="_blank"><button>ReviveMii</button></a>
-    <a href="/errorexe.html" target="_blank"><button>My Friendcodes (In German)</button></a>
-  </div>
+  <main>
+    <p>Here you can find useful links to my projects:</p>
+    <div class="button-container">
+      <a href="/erroreng.html" target="_blank"><button>Friendcodes (English)</button></a>
+      <a href="http://revivemii.errexe.xyz/" target="_blank"><button>ReviveMii</button></a>
+      <a href="/errorexe.html" target="_blank"><button>Friendcodes (German)</button></a>
+      <!-- Optional: Additional Link -->
+      <!-- <a href="/about.html" target="_blank"><button>About Me</button></a> -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 TheErrorExe. All rights reserved. | <a href="mailto:contact@theerrorexe.com">Contact</a></p>
+  </footer>
 </body>
 </html>
