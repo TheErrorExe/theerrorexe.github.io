@@ -1,4 +1,0 @@
-Version 1.0.0
-Changes:
-No Changes
-Newest Version: Alpha

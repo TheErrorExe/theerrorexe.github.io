@@ -1,3 +1,0 @@
-UPDATER-API-INFO:
-Version: Alpha
-Important: 1
