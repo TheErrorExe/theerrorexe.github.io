@@ -3,91 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to the official website of TheErrorExe! Explore links, projects, and more.">
-  <meta name="keywords" content="TheErrorExe, Friendcodes, ReviveMii, Projects, Website">
+  <meta name="description" content="Welcome to the official website of TheErrorExe! Explore my projects, social media, and more.">
+  <meta name="keywords" content="TheErrorExe, Projects, ReviveMii, Friendcodes, Social Media">
   <meta name="author" content="TheErrorExe">
   <title>TheErrorExe - Official Website</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@500&display=swap">
   <style>
     body {
       font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
       text-align: center;
+      overflow-x: hidden;
     }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffcc;
+    }
+
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #00cc99;
+    }
+
     header {
-      background: linear-gradient(90deg, #4CAF50, #81C784);
+      background: linear-gradient(90deg, #003366, #002244);
       color: white;
-      padding: 20px 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 80px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
     }
+
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInDown 1s ease-out forwards;
     }
-    main {
-      margin: 50px auto;
-      max-width: 800px;
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out 0.5s forwards;
+    }
+
+    section {
+      padding: 60px 20px;
+      margin: 40px 0;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background: #262626;
       padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
     }
-    a {
-      text-decoration: none;
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      color: #00ffcc;
     }
-    button {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: #b3b3b3;
     }
-    button:hover {
-      background: #45a049;
-      transform: translateY(-2px);
-    }
+
     footer {
-      background: #333;
+      background: #002244;
       color: white;
-      padding: 10px 0;
-      margin-top: 50px;
+      padding: 20px 0;
+      margin-top: 80px;
       font-size: 14px;
     }
+
     footer a {
-      color: #81C784;
+      color: #00ffcc;
       text-decoration: none;
     }
+
     footer a:hover {
       text-decoration: underline;
+    }
+
+    @keyframes fadeInDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to TheErrorExe's Website</h1>
+    <h1>TheErrorExe</h1>
+    <p>Developer</p>
   </header>
+
   <main>
-    <p>Here you can find useful links to my projects:</p>
-    <div class="button-container">
-      <a href="/erroreng.html" target="_blank"><button>Friendcodes (English)</button></a>
-      <a href="http://revivemii.errexe.xyz/" target="_blank"><button>ReviveMii</button></a>
-      <a href="/errorexe.html" target="_blank"><button>Friendcodes (German)</button></a>
-      <!-- Optional: Additional Link -->
-      <a href="/social.html" target="_blank"><button>Social Media</button></a>
-    </div>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hi, I'm TheErrorExe! I'm a Python and Web Developer.</p>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Friendcodes (English)</h3>
+          <p>Friendcodes from games that i play.</p>
+          <a href="/erroreng.html" target="_blank">Visit Project</a>
+        </div>
+        <div class="project-card">
+          <h3>ReviveMii</h3>
+          <p>A Nintendo Revival Service.</p>
+          <a href="http://revivemii.errexe.xyz/" target="_blank">Visit Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Friendcodes (German)</h3>
+          <p>Eine Sammlung von Freundescodes für verschiedene Spiele und Plattformen die ich spiele.</p>
+          <a href="/errorexe.html" target="_blank">Visit Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Social Media</h3>
+          <p>Connect with me on various social media platforms.</p>
+          <a href="/social.html" target="_blank">Visit Page</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Have a question or want to collaborate? Feel free to reach out!</p>
+      <a href="mailto:theerrorexe@errexe.xyz">Send Email</a>
+    </section>
   </main>
+
   <footer>
-    <p>&copy; 2024 TheErrorExe. All rights reserved. | <a href="mailto:theerrorexe@errexe.xyz">Contact</a></p>
+    <p>&copy; 2025 TheErrorExe. All rights reserved. | <a href="mailto:theerrorexe@errexe.xyz">Contact</a></p>
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const elementInView = (el) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return elementTop <= (window.innerHeight || document.documentElement.clientHeight) * 0.75;
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('visible');
+    };
+
+    const handleScrollAnimation = () => {
+      sections.forEach((el) => {
+        if (elementInView(el)) {
+          displayScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      handleScrollAnimation();
+    });
+
+    handleScrollAnimation();
+  </script>
 </body>
 </html>
